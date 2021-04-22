@@ -19,32 +19,35 @@ class ScoreCardWidget extends StatelessWidget {
 
           //Expanded para representar o grafico
           //expanded é para ele ser expandido na tela e nao quebrar ela ou dar error
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                  flex: 1,
-                  child:
-                      ChartWidget()), //aqui estamos renderizando o modulo chart_widget (que vai aparecer a progress bar)
-              //colocando os textos do card
-              Expanded(
-                flex: 3,
-                //para por o padding clique sobre Column e clique na lampada amarela e click no padding
-                //ele ja vai posicionar na posição correta
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Vamos começar", style: AppTextStyles.heading),
-                      Text("Complete os desafios e avance em conhecimento",
-                          style: AppTextStyles.body)
-                    ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                    flex: 1,
+                    child:
+                        ChartWidget()), //aqui estamos renderizando o modulo chart_widget (que vai aparecer a progress bar)
+                //colocando os textos do card
+                Expanded(
+                  flex: 3,
+                  //para por o padding clique sobre Column e clique na lampada amarela e click no padding
+                  //ele ja vai posicionar na posição correta
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 24),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Vamos começar", style: AppTextStyles.heading),
+                        Text("Complete os desafios e avance em conhecimento",
+                            style: AppTextStyles.body)
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           )),
     );
   }
