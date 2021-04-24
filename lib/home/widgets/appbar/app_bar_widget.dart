@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:nlw/core/core.dart';
 import 'package:nlw/home/widgets/score_card/score_card_widget.dart';
+import 'package:nlw/shared/Models/user_model.dart';
 
 // alterando a classe para ser usado o PreferredSizeWidget
 // antes o exteds estava com o StatelessWidget
 class AppBarWidget extends PreferredSize {
+  //colocando o getuser do controller
+  final UserModel user;
+
   //quando colocarmos o PreferredSize ele pede para criar o construtor abaixo
-  AppBarWidget()
+  AppBarWidget({required this.user}) //colocando o controller
       : super(
           preferredSize: Size.fromHeight(250), //o 250 é em px
           child: Container(
@@ -34,7 +38,7 @@ class AppBarWidget extends PreferredSize {
                           style: AppTextStyles.title,
                           children: [
                             TextSpan(
-                                text: "Vitor", style: AppTextStyles.titleBold)
+                                text: user.name, style: AppTextStyles.titleBold)
                           ])),
 
                       //colocando uma imagem e definindo seu tamanho (vamos por nossa imagem do github)
@@ -46,7 +50,7 @@ class AppBarWidget extends PreferredSize {
                           borderRadius: BorderRadius.circular(50),
                           image: DecorationImage(
                             image: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/70340981?v=4"),
+                                user.photoUrl), //utilizando o controller
                           ),
                         ),
                       )

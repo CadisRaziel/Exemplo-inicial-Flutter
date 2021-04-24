@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nlw/challenge/challenge_page.dart';
 import 'package:nlw/home/home_page.dart'; //podemos usar tanto o material que é do google ou o cupertino do ios para criar components
 //porém o material é melhor
 
@@ -13,6 +12,6 @@ class AppWidget extends StatelessWidget {
 
   //o build é sempre responsavel para criar os componentes
   Widget build(BuildContext context) {
-    return MaterialApp(title: "DevQuiz", home: ChallengePage());
+    return MaterialApp(title: "DevQuiz", home: HomePage());
   }
 }

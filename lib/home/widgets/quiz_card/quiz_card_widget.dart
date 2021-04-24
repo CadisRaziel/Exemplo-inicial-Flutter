@@ -4,7 +4,16 @@ import 'package:nlw/shared/widgets/Progress_indicator/progress_indicator_widget.
 
 //criando os cards do quiz
 class QuizCardWidget extends StatelessWidget {
-  const QuizCardWidget({Key? key}) : super(key: key);
+  final String title;
+  final String completed;
+  final double percent;
+
+  const QuizCardWidget(
+      {Key? key,
+      required this.title,
+      required this.completed,
+      required this.percent})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class QuizCardWidget extends StatelessWidget {
           SizedBox(height: 24),
           //texto do card
           Text(
-            "Gerenciamento de Estado",
+            title,
             style: AppTextStyles.heading15,
           ),
 
@@ -43,12 +52,12 @@ class QuizCardWidget extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: Text(
-                  "3 de 10",
+                  completed,
                   style: AppTextStyles.body11,
                 ),
               ),
               //colocando a progress bar verde
-              Expanded(flex: 2, child: ProgressIndicatorWidget(value: 0.3)),
+              Expanded(flex: 2, child: ProgressIndicatorWidget(value: percent)),
             ],
           )
         ],
