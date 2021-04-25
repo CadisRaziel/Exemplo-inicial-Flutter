@@ -59,7 +59,11 @@ class AppBarWidget extends PreferredSize {
                 ),
                 //e aqui abaixo da row colocamos o score_card_widget para ser renderizado
                 //e vamos colocar um Align para alinhar ele abaixo do text Olá vitor e a foto
-                Align(alignment: Alignment(0.0, 1.0), child: ScoreCardWidget())
+                Align(
+                    alignment: Alignment(0.0, 1.0),
+                    child: ScoreCardWidget(
+                      percent: user.score / 100,
+                    ))
               ],
             ),
           ),

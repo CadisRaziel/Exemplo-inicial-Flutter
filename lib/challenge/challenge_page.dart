@@ -3,12 +3,15 @@ import 'package:nlw/challenge/challenge_controller.dart';
 import 'package:nlw/challenge/widgets/next_button/next_button_widget.dart';
 import 'package:nlw/challenge/widgets/question_indicator/question_indicator_widget.dart';
 import 'package:nlw/challenge/widgets/quiz/quiz_widget.dart';
+import 'package:nlw/result/result_page.dart';
 import 'package:nlw/shared/Models/question_model.dart';
 
 //tela das perguntas
 class ChallengePage extends StatefulWidget {
   final List<QuestionModel> questions;
-  ChallengePage({Key? key, required this.questions}) : super(key: key);
+  final String title;
+  ChallengePage({Key? key, required this.questions, required this.title})
+      : super(key: key);
 
   @override
   _ChallengePageState createState() => _ChallengePageState();
@@ -36,6 +39,13 @@ class _ChallengePageState extends State<ChallengePage> {
           //repare que para ir para proxima pagina é só eu colocar nextPage que ja é nativo do flutter
           duration: Duration(milliseconds: 150),
           curve: Curves.linear);
+  }
+
+  void onSelected(bool value) {
+    if (value) {
+      controller.qtdAnwserRight++;
+    }
+    nextPage();
   }
 
   @override
@@ -78,7 +88,7 @@ class _ChallengePageState extends State<ChallengePage> {
             .map(
               (e) => QuizWidget(
                 question: e,
-                onChange: nextPage,
+                onSelected: onSelected,
               ),
             )
             .toList(),
@@ -106,8 +116,16 @@ class _ChallengePageState extends State<ChallengePage> {
                               child: NextButtonWidget.green(
                             label: "Confirmar",
                             onTap: () {
-                              Navigator.pop(
-                                  context); //vai voltar para a homepage
+                              Navigator.pushReplacement(
+                                  //pushReplacement vai voltar para tela de inicio
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ResultPage(
+                                      result: controller.qtdAnwserRight,
+                                      title: widget.title,
+                                      length: widget.questions.length,
+                                    ),
+                                  )); //vai voltar para a homepage
                             },
                           ))
                       ],

@@ -11,7 +11,8 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //função de delay criada para aparecer a tela de splash e der 2 segundos ir para tela de homepage
-    Future.delayed(Duration(seconds: 2)).then((_) => Navigator.push(
+    Future.delayed(Duration(seconds: 2)).then((_) => Navigator.pushReplacement(
+        //pushReplacement = para impedir que o app volte para a tela de splash !! (a splash deve aparecer apenas 1 vez, que é na hora que abre o app)
         context,
         MaterialPageRoute(
           builder: (context) => HomePage(),

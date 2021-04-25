@@ -16,6 +16,16 @@ class NextButtonWidget extends StatelessWidget {
       required this.borderColor,
       required this.onTap});
 
+  //criando contrutor nomiavel (o purple vai ser o nome do constuctor)
+  NextButtonWidget.purple({
+    required String label,
+    required VoidCallback onTap,
+  })   : this.backgroundColor = AppColors.purple,
+        this.fontColor = AppColors.white,
+        this.borderColor = AppColors.purple,
+        this.onTap = onTap,
+        this.label = label;
+
   //criando contrutor nomiavel (o green vai ser o nome do constuctor)
   NextButtonWidget.green({
     required String label,

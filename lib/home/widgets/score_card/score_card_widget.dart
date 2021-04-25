@@ -4,7 +4,8 @@ import 'package:nlw/home/widgets/chart/chart_widget.dart';
 
 //aqui vamos criar o card que fica sobre a Appbar mostrando "Resultado" e "Vamos começar"
 class ScoreCardWidget extends StatelessWidget {
-  const ScoreCardWidget({Key? key}) : super(key: key);
+  final double percent;
+  const ScoreCardWidget({Key? key, required this.percent}) : super(key: key);
 
 //esse card tem que ser renderizado no app_bar_widget
   @override
@@ -26,8 +27,9 @@ class ScoreCardWidget extends StatelessWidget {
               children: [
                 Expanded(
                     flex: 1,
-                    child:
-                        ChartWidget()), //aqui estamos renderizando o modulo chart_widget (que vai aparecer a progress bar)
+                    child: ChartWidget(
+                      percent: percent,
+                    )), //aqui estamos renderizando o modulo chart_widget (que vai aparecer a progress bar)
                 //colocando os textos do card
                 Expanded(
                   flex: 3,
