@@ -1,45 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:nlw/challenge/widgets/awnser/awnser_widget.dart';
 import 'package:nlw/core/app_text_styles.dart';
+import 'package:nlw/shared/Models/awnser_model.dart';
+import 'package:nlw/shared/Models/question_model.dart';
 
 //cards de titulo das perguntas
-class QuizWidget extends StatelessWidget {
-  final String
-      title; //lembre-se sempre que colocar uma propriedade "final" eu preciso colocar o "required  this.title"
-  const QuizWidget({Key? key, required this.title}) : super(key: key);
+class QuizWidget extends StatefulWidget {
+  final QuestionModel question;
+  final VoidCallback
+      onChange; //quando o usuario selecionar uma respotas ele vai para a proxima lista de questoes
+  const QuizWidget({Key? key, required this.question, required this.onChange})
+      : super(key: key);
+
+  @override
+  _QuizWidgetState createState() => _QuizWidgetState();
+}
+
+class _QuizWidgetState extends State<QuizWidget> {
+  int indexSelected = -1;
+
+  AwnserModel awnser(int index) => widget.question.awnsers[index];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
+          SizedBox(height: 64),
           Text(
-            title,
+            widget.question.title,
             style: AppTextStyles.heading,
           ),
           SizedBox(height: 24),
-
-          //renderizando a Awnser_widget
-          AwnserWidget(
-            title: "Que dia é hoje?",
-            isRight: true,
-            isSelected: true,
-          ),
-          AwnserWidget(
-            title: "Que Ano é hoje?",
-            isRight: false,
-            isSelected: true,
-          ),
-          AwnserWidget(
-            title: "Que Semana é hoje?",
-            isRight: false,
-            isSelected: false,
-          ),
-          AwnserWidget(
-            title: "Que Mes é hoje?",
-            isRight: true,
-            isSelected: true,
-          )
+          for (var i = 0; i < widget.question.awnsers.length; i++)
+            AwnserWidget(
+              awnser: awnser(i),
+              disabled: indexSelected != -1,
+              isSelected: indexSelected == i,
+              onTap: () {
+                indexSelected = i;
+                setState(() {});
+                Future.delayed(Duration(seconds: 1)).then((value) => widget
+                    .onChange()); //para que quando o usuario selecionar a resposta, ele possa ver ela por 3 segundos e depois muda de tela no onChange
+              },
+            ),
         ],
       ),
     );

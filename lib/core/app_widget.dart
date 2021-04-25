@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nlw/home/home_page.dart'; //podemos usar tanto o material que é do google ou o cupertino do ios para criar components
+import 'package:nlw/Splash/splash_page.dart';
+
+//podemos usar tanto o material que é do google ou o cupertino do ios para criar components
 //porém o material é melhor
 
 //StatelessWidget = não tem estado ou seja, vai ser renderizado e pronto dali pra frente ele não altera mais
@@ -12,6 +14,9 @@ class AppWidget extends StatelessWidget {
 
   //o build é sempre responsavel para criar os componentes
   Widget build(BuildContext context) {
-    return MaterialApp(title: "DevQuiz", home: HomePage());
+    return MaterialApp(
+      title: "DevQuiz",
+      home: SplashPage(),
+    );
   }
 }

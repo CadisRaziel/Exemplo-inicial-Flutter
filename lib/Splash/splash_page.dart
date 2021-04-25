@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlw/core/core.dart';
+import 'package:nlw/home/home_page.dart';
 //para dar esse import do material rapidamente clique no Widget e de CTRL + . e vai aparecer o import dele !!
 
 //a splash não é uma pagina que vai mudar !!!
@@ -9,6 +10,12 @@ import 'package:nlw/core/core.dart';
 class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //função de delay criada para aparecer a tela de splash e der 2 segundos ir para tela de homepage
+    Future.delayed(Duration(seconds: 2)).then((_) => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        )));
     return Scaffold(
       //colocando o background gradiente !!!
       body: Container(

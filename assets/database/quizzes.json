@@ -24,17 +24,35 @@
                 ]
             },
             {
-                "title": "Esta curtindo o Flutter?",
+                "title": "Gostou do Nlw?",
                 "awnsers": [
                     {
-                        "title": "Amando Flutter",
+                        "title": "Amando Nlw"
+                    },
+                    {
+                        "title": "Estou gostando"
+                    },
+                    {
+                        "title": "Só consigo aprender sobre padrao de projeto",
                         "isRight": true
                     },
                     {
-                        "title": "Estou curtindo"
+                        "title": "Estou odiando, é muito dificil"
+                    }
+                ]
+            },
+            {
+                "title": "Só para teste?",
+                "awnsers": [
+                    {
+                        "title": "teste Nlw"
                     },
                     {
-                        "title": "Esta mais ou menos por enquanto"
+                        "title": "Estou gostando",
+                        "isRight": true
+                    },
+                    {
+                        "title": "Só consigo aprender sobre padrao de projeto"
                     },
                     {
                         "title": "Estou odiando, é muito dificil"
